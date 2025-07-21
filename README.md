@@ -1,1 +1,1 @@
-RMS Module for VCOS Project
+OCD Module for VCOS Project
