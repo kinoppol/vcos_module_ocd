@@ -2,7 +2,17 @@
 class ocd{
   function timetables(){
     global $module;
-    $ret['content'] = $module->view('home/timetable');
+    $user_model=$module->model('teacher');
+    $teacher=$user_model->getTeacher();
+
+    $timeTable_model=$module->model('timeTable');
+
+    $current_semester=array('academicYear'=>'2568','semester'=>'1');
+    $tids=$timeTable_model->getTeacher($current_semester);//เลือกเฉพาะครูที่มีตารางสอน
+
+    $data=array('teachers'=>$teacher,'tids'=>$tids);
+
+    $ret['content'] = $module->view('home/timetableTeacher',$data);
     $ret['title'] = 'ตารางสอน';
     return $ret;
   }
