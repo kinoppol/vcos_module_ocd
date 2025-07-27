@@ -30,6 +30,22 @@ foreach($tids as $t){
 }
 
 $data['content']='
+ <div class="row g-6">
+    <div class="col-md-4">
+        <div class="mb-4">
+            <!-- <label for="exampleFormControlSelect1" class="form-label">เลือกภาคเรียน</label> -->
+                <select class="form-select" id="exampleFormControlSelect1" aria-label="Default select example">
+                    <option selected>1/2568</option> 
+                </select>
+        </div>
+    </div>      
+    <div class="col-md-4">
+        <div class="mb-4">
+            <button type="submit" class="btn btn-primary from-control">ตกลง</button>
+        </div>
+    </div>
+</div>
+
 <div class="table-responsive text-nowrap">
                       <table class="table">
                           <thead>
