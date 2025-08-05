@@ -18,7 +18,7 @@ foreach($tids as $t){
                 href="#"><i
                     class="bx bx-list-check me-1"></i> ตั้งค่าการนับคาบ</a>
             <a class="dropdown-item"
-                href="'.module_api('ocd','ocd_print','timetable').'" target="_blank"><i
+                href="'.module_api('ocd','ocd_print','timetable').'/semester/'.$semester.'/tid/'.$t['tid'].'" target="_blank"><i
                     class="bx bx-table me-1"></i> พิมพ์ตารางสอน ศธ.02</a>
             <a class="dropdown-item"
                 href="#"><i

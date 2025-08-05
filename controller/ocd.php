@@ -7,10 +7,11 @@ class ocd{
 
     $timeTable_model=$module->model('timeTable');
 
-    $current_semester=array('semester'=>'1/2568');
+    $semester='1/2568';
+    $current_semester=array('semester'=>$semester);
     $tids=$timeTable_model->getTeacher($current_semester);//เลือกเฉพาะครูที่มีตารางสอน
 
-    $data=array('teachers'=>$teacher,'tids'=>$tids);
+    $data=array('teachers'=>$teacher,'tids'=>$tids,'semester'=>$semester);
 
     $ret['content'] = $module->view('home/timetableTeacher',$data);
     $ret['title'] = 'ตารางสอน';
