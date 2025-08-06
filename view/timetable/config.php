@@ -1,30 +1,16 @@
 <?php
-helper('time');
-$data['title']='จัดการตารางสอนตามรายชื่อครู';
+$data['title']='ตั้งค่าการเบิก';
 
 $teacherTable='';
 foreach($tids as $t){
   $teacherTable.='<tr>
-  <td>'.$teachers[$t['tid']]['name'].' '.$teachers[$t['tid']]['surname'].'</td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
   <td>
-
-    <div class="dropdown">
-        <button type="button" class="btn p-0 dropdown-toggle hide-arrow"
-            data-bs-toggle="dropdown">
-            <i class="bx bx-dots-vertical-rounded"></i>
-        </button>
-        <div class="dropdown-menu">
-            <a class="dropdown-item"
-                href="'.module_url('ocd','ocd','timetableConfig').'/semester/'.base64_encode($semester).'/tid/'.$t['tid'].'"><i
-                    class="bx bx-list-check me-1"></i> ตั้งค่าการเบิก</a>
-            <a class="dropdown-item"
-                href="'.module_api('ocd','ocd_print','timetable').'/semester/'.urlencode(base64_encode($semester)).'/tid/'.$t['tid'].'" target="_blank"><i
-                    class="bx bx-table me-1"></i> พิมพ์ตารางสอน ศธ.02</a>
-            <a class="dropdown-item"
-                href="#"><i
-                    class="bx bx-table me-1"></i> พิมพ์ตารางสอนเบิก</a>
-        </div>
-    </div>
+ X / -
+    
   </td>
   </tr>';
 }
@@ -52,7 +38,10 @@ $data['content']='
                       <table class="table">
                           <thead>
                               <tr>
-                                  <th>ครู</th>
+                                  <th>รหัสวิชา</th>
+                                  <th>ชื่อวิชา</th>
+                                  <th>วันเวลา</th>
+                                  <th>กลุ่มผู้เรียน</th>
                                   <th>ดำเนินการ</th>
                               </tr>
                           </thead>

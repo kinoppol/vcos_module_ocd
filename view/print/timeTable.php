@@ -1,5 +1,6 @@
 <?php
 helper('print');
+//print_r($teacher);
 $data=array(
     'title'=>'ตารางสอน',
     'content'=>'
@@ -94,8 +95,8 @@ $data=array(
     <td style="border:1px solid #000; font-size:14px; text-align:center">&nbsp;</td></tr>
 
     <tr>
-    <td style="border-left:1px solid #000; border-bottom:1px solid #000; font-size:14px;" rowspan="5">&nbsp;<b>ภาคเรียน</b> 1/2568<br>
-        &nbsp;<b>ผู้สอน</b><br>
+    <td style="border-left:1px solid #000; border-bottom:1px solid #000; font-size:14px;" rowspan="5">&nbsp;<b>ภาคเรียน</b> '.$semester.'<br>
+        &nbsp;<b>ผู้สอน</b> '.$teacher['name'].' '.$teacher['surname'].'<br>
         &nbsp;<b>วุฒิการศึกษา</b><br>
         &nbsp;<b>แผนกวิชา</b><br>
         &nbsp;<b>หน้าที่พิเศษ</b><br>
