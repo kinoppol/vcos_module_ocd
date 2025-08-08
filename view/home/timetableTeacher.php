@@ -34,6 +34,7 @@ $data['content']='
     <form action="'.module_url('ocd','ocd','timetables').'" method="post">
         <div class="col-md-4">
             <div class="mb-4">
+            <label for="exampleFormControlInput1" class="form-label">ภาคเรียน</label>
                 <!-- <label for="exampleFormControlSelect1" class="form-label">เลือกภาคเรียน</label> -->
                     <select class="form-select" id="exampleFormControlSelect1" aria-label="Default select example" name="semester">
                         '.gen_option($semesters,$semester).'

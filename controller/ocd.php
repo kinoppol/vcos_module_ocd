@@ -56,14 +56,18 @@ class ocd{
     global $param;
     $timeTable_model=$module->model('timeTable');
     $teacher_model=$module->model('teacher');
-
+    $semester=base64_decode($param['semester']);
     $teacher_data=$teacher_model->getTeacher(array('citizen_id'=>$param['tid']));
 
-    $data['teacher']=$teacher_data[0];
+    $con=array('semester'=>$semester,'teacher_id'=>$param['tid']);
+    $data['timetables']=$timeTable_model->getTimetable($con);
+    //print_r($data['timetables']);
+    $data['teacher']=$teacher_data;
     $data['semester']=base64_decode($param['semester']);
 
-    $ret['content']=$model->view('timetable/config',$data);
-
+    $ret['content']=$module->view('timetable/config',$data);
+    $ret['title']='ตั้งค่าการเบิก';
+    return $ret;
   }
 
 }
