@@ -23,8 +23,9 @@ class timeTable extends dummy_model{
 
     function getTeacher($data=array()){
         $sql='select distinct(teacher_id) as tid from rms_timetable';
+        $sql.= ' where timeTableID !="" AND timeTableSubID != ""';
         if(count($data)>=1){
-            $sql.= ' where '.arr2and($data);
+            $sql.= ' AND '.arr2and($data);
         }
         //print $sql;
         $result=$this->db->query($sql);
