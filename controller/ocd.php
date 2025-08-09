@@ -21,7 +21,7 @@ class ocd{
       $semester=$_SESSION['semester'];
     }
 
-    $current_semester=array('semester'=>$semester);
+    $current_semester=array('semester'=>$semester,);
     $tids=$timeTable_model->getTeacher($current_semester);//เลือกเฉพาะครูที่มีตารางสอน
 
     $semesters=array();
@@ -60,14 +60,33 @@ class ocd{
     $teacher_data=$teacher_model->getTeacher(array('citizen_id'=>$param['tid']));
 
     $con=array('semester'=>$semester,'teacher_id'=>$param['tid']);
-    $data['timetables']=$timeTable_model->getTimetable($con);
+    $data['timeSlot']=$timeTable_model->getTimetableSlot($con);
     //print_r($data['timetables']);
-    $data['teacher']=$teacher_data;
+    $data['teacher']=$teacher_data[$param['tid']];
     $data['semester']=base64_decode($param['semester']);
-
+    $data['module']=$module;
+    $ocd_config_model=$module->model('ocd_config');
+    $data['ocd_config_model']=$ocd_config_model;
+    $data['timeTable_model']=$timeTable_model;
     $ret['content']=$module->view('timetable/config',$data);
     $ret['title']='ตั้งค่าการเบิก';
     return $ret;
+  }
+
+  function saveConfig(){
+    global $module;
+    global $param;
+    $ocd_config_model=$module->model('ocd_config');
+    foreach($_POST['timetable_status'] as $k=>$v){
+      $key=array();
+      list($key['semester'],$key['teacher_id'],$key['day_of_week_no'],$time_start,$time_end)=explode('-',$k);
+      $key['time_range']=$time_start.'-'.$time_end;
+      $ocd_config_model->setConfig($key,$v);
+    }
+
+    $ret['content']=redirect(module_url('ocd','ocd','timetableConfig').'/semester/'.$param['semester'].'/tid/'.$param['tid']);
+    return $ret;
+
   }
 
 }

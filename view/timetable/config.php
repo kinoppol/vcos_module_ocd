@@ -1,82 +1,77 @@
 <?php
-$data['title']='ตั้งค่าตำแหน่ง';
-
+$data['title']='ภาคเรียน '.$semester;
+$module->helper('radio');
 $teachTable='';
-//print_r($timetables);
-foreach($timetables as $t){
-    if(empty($t['timeTableID'])||empty($t['timeTableSubID'])){
-        continue;
-    }
-    $id=$t['time'].'-'.$t['timeTableID'].'-'.$t['timeTableSubID'].'-'.$t['subject_code'];
+//print_r($timeSlot);
+foreach($timeSlot as $t){
+    // if(empty($t['timeTableID'])||empty($t['timeTableSubID'])){
+    //     continue;
+    // }
+    $id=$semester.'-'.$t['teacher_id'].'-'.$t['day_of_week_no'].'-'.$t['time_range'];
+
+    $key=array(
+        'semester'=>$semester,
+        'teacher_id'=>$t['teacher_id'],
+        'day_of_week_no'=>$t['day_of_week_no'],
+        'time_range'=>$t['time_range'],
+    );
+    $ocd_tc=$ocd_config_model->getConfig($key);
+    $ocd_tc=$ocd_tc[0];
+    //print_r($ocd_tc);
+    $def=empty($ocd_tc['status'])?'in':$ocd_tc['status'];
+
+    $radio_data=array(
+        'name'=>'timetable_status['.$id.']',
+        'items'=>array(
+            'in'=>'ใน',
+            'out'=>'นอก',
+            'not'=>'ไม่นับ'
+        ),
+        'def'=>$def,
+    );
+
   $teachTable.='<tr>
+  <td>'.$t['day_of_week'].'</td>
+  <td>'.$t['time_range'].'</td>
   <td>'.$t['subject_code'].'</td>
   <td>'.$t['subject_name'].'</td>
-  <td>'.$t['day_of_week'].' '.$t['time_range'].'</td>
   <td>'.$t['student_group_id'].'</td>
   <td>
     <div class="col-md p6">
-        <div class="form-check form-check-inline mt-4">
-            <input name="count_status['.$id.']" class="form-check-input" type="radio" value="in"/>
-            <label class="form-check-label" for="disabledRadio1"> ใน </label>
-        </div>
-        
-        <div class="form-check form-check-inline mt-4">
-            <input name="count_status['.$id.']" class="form-check-input" type="radio" value="out"/>
-            <label class="form-check-label" for="disabledRadio1"> นอก </label>
-        </div>
-        
-        <div class="form-check form-check-inline mt-4">
-            <input name="count_status['.$id.']" class="form-check-input" type="radio" value="not"/>
-            <label class="form-check-label" for="disabledRadio1"> ไม่คิด </label>
-        </div>
+        '.gen_radio($radio_data).'
     </div>
   </td>
   </tr>';
 }
-
+//print_r($teacher);
 $data['content']='
-<!--
- <div class="row g-6">
-    <form action="'.module_url('ocd','ocd','timetables').'" method="post">
-        <div class="col-md-6">
-            <div class="mb-4">
-                <label for="exampleFormControlSelect1" class="form-label">วุฒิการศึกษา</label>
-                    <select class="form-select" id="exampleFormControlSelect1" aria-label="Default select example" name="semester">
-                        '.gen_option($semesters,$semester).'
-                    </select>
-            </div>
-        </div>      
-        <div class="col-md-6">
-            <div class="mb-4">
-                <label for="exampleFormControlSelect1" class="form-label">หน้าที่พิเศษ</label>
-                    <select class="form-select" id="exampleFormControlSelect1" aria-label="Default select example" name="semester">
-                        '.gen_option($semesters,$semester).'
-                    </select>
-            </div>
-        </div>   
-        <div class="col-md-6">
-            <div class="mb-4">
-                <button type="submit" class="btn btn-primary from-control">บันทึก</button>
-            </div>
-        </div>
-    </form>
-</div>
--->
+<p>ตั้งค่าการเบิกของ '.$teacher['name'].' '.$teacher['surname'].'</p>
 <div class="table-responsive text-nowrap">
+
+                        <form action="'.module_api('ocd','ocd','saveConfig').'/semester/'.base64_encode($semester).'/tid/'.$teacher['citizen_id'].'" method="post">
                       <table class="table">
                           <thead>
                               <tr>
+                                  <th>วัน</th>
+                                  <th>เวลา</th>
                                   <th>รหัสวิชา</th>
                                   <th>ชื่อวิชา</th>
-                                  <th>วันเวลา</th>
                                   <th>กลุ่มผู้เรียน</th>
-                                  <th>กำหนดค่าการเบิก</th>
+                                  <th>กำหนดค่าภาระงาน</th>
                               </tr>
                           </thead>
                           <tbody class="table-border-bottom-0">
                           '.$teachTable.'                         
                           </tbody>
                         </table>
+                        <hr>
+                            <div class="col-md-12">
+                                <div class="mb-6">
+                                    <button type="submit" class="btn btn-primary from-control">บันทึก</button>
+                                    <button type="reset" class="btn btn-danger from-control">ล้างค่า</button>
+                                </div>
+                            </div>
+                        </form>
                         </div>
 
 ';
