@@ -30,12 +30,32 @@ foreach($timeSlot as $t){
         'def'=>$def,
     );
 
+    $table_key=array();
+    $table_key['day_of_week_no']=$t['day_of_week_no'];
+    $table_key['time_range']=$t['time_range'];
+    $table_key['teacher_id']=$t['teacher_id'];
+    $tt_data=$timeTable_model->getTimeTable($table_key);
+
+    //print_r($tt_data);
+    $subject_name=array();
+    $subject_code=array();
+    $student_group_id=array();
+    while($td=array_shift($tt_data)){
+        $subject_name[]=$td['subject_name'];
+        $subject_code[]=$td['subject_code'];
+        $student_group_id[]=$td['student_group_id'];
+    }
+
+    $subject_name=array_unique($subject_name);
+    $subject_code=array_unique($subject_code);
+    $student_group_id=array_unique($student_group_id);
+
   $teachTable.='<tr>
   <td>'.$t['day_of_week'].'</td>
   <td>'.$t['time_range'].'</td>
-  <td>'.$t['subject_code'].'</td>
-  <td>'.$t['subject_name'].'</td>
-  <td>'.$t['student_group_id'].'</td>
+  <td>'.implode(', ',$subject_code).'</td>
+  <td>'.implode(', ',$subject_name).'</td>
+  <td>'.implode(', ',$student_group_id).'</td>
   <td>
     <div class="col-md p6">
         '.gen_radio($radio_data).'
