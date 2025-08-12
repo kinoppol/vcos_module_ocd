@@ -1,6 +1,45 @@
 <?php
 helper('print');
-//print_r($teacher);
+print_r($subject_list);
+
+if(!count($subject_list)){
+
+}else{
+    $subject_row_1_5='';
+    for($i=0;$i<5;$i++){
+        $subject_row_1_5.='<tr>
+    <td style="border:1px solid #000; font-size:14px; text-align:center">&nbsp;</td>
+    <td style="border:1px solid #000; font-size:14px; text-align:center">&nbsp;</td>
+    <td style="border:1px solid #000; font-size:14px; text-align:center">&nbsp;</td>
+    <td style="border:1px solid #000; font-size:14px; text-align:center">&nbsp;</td>
+    <td style="border:1px solid #000; font-size:14px; text-align:center">&nbsp;</td>
+    <td style="border:1px solid #000; font-size:14px; text-align:center">&nbsp;</td>
+    <td style="border:1px solid #000; font-size:14px; text-align:center">&nbsp;</td>
+    <td style="border:1px solid #000; font-size:14px; text-align:center">&nbsp;</td>
+    <td style="border:1px solid #000; font-size:14px; text-align:center">&nbsp;</td>
+    <td style="border:1px solid #000; font-size:14px; text-align:center">&nbsp;</td>
+    <td style="border:1px solid #000; font-size:14px; text-align:center">&nbsp;</td>
+    <td style="border:1px solid #000; font-size:14px; text-align:center">&nbsp;</td></tr>';
+    }
+    
+    $subject_row_6_9='';
+    for($i=0;$i<4;$i++){
+        $subject_row_6_9.='<tr>
+    <td style="border:1px solid #000; font-size:14px; text-align:center">&nbsp;</td>
+    <td style="border:1px solid #000; font-size:14px; text-align:center">&nbsp;</td>
+    <td style="border:1px solid #000; font-size:14px; text-align:center">&nbsp;</td>
+    <td style="border:1px solid #000; font-size:14px; text-align:center">&nbsp;</td>
+    <td style="border:1px solid #000; font-size:14px; text-align:center">&nbsp;</td>
+    <td style="border:1px solid #000; font-size:14px; text-align:center">&nbsp;</td>
+    <td style="border:1px solid #000; font-size:14px; text-align:center">&nbsp;</td>
+    <td style="border:1px solid #000; font-size:14px; text-align:center">&nbsp;</td>
+    <td style="border:1px solid #000; font-size:14px; text-align:center">&nbsp;</td>
+    <td style="border:1px solid #000; font-size:14px; text-align:center">&nbsp;</td>
+    <td style="border:1px solid #000; font-size:14px; text-align:center">&nbsp;</td>
+    <td style="border:1px solid #000; font-size:14px; text-align:center">&nbsp;</td></tr>';
+    }
+}
+
 $data=array(
     'title'=>'ตารางสอน',
     'content'=>'
@@ -11,7 +50,7 @@ $data=array(
     </style>
     <span id="htmlCode">
     <table width="100%" cellpadding="0" cellspacing="0" border="0" style="min-width: 1024px; margin-top: 15px; margin-bottom: 3px;"><tr>
-        <td width="24%" style="border-top:1px solid #000; border-left:1px solid #000; font-weight: bold; font-size:16px; text-align:center" rowspan="5">
+        <td width="24%" style="border-top:1px solid #000; border-left:1px solid #000; font-weight: bold; font-size:16px; text-align:center" rowspan="6s">
         <br>
         <img src="'.site_url('images/logo_VEC.png',true).'" width="80"><br>
         วิทยาลัยอาชีวศึกษาร้อยเอ็ด
@@ -30,69 +69,7 @@ $data=array(
         <td style="border:1px solid #000; font-size:14px; text-align:center" width="2%"><b>ช.</b></td>
         </td>
     </td></tr>
-    <tr>
-    <td style="border:1px solid #000; font-size:14px; text-align:center">&nbsp;</td>
-    <td style="border:1px solid #000; font-size:14px; text-align:center">&nbsp;</td>
-    <td style="border:1px solid #000; font-size:14px; text-align:center">&nbsp;</td>
-    <td style="border:1px solid #000; font-size:14px; text-align:center">&nbsp;</td>
-    <td style="border:1px solid #000; font-size:14px; text-align:center">&nbsp;</td>
-    <td style="border:1px solid #000; font-size:14px; text-align:center">&nbsp;</td>
-    <td style="border:1px solid #000; font-size:14px; text-align:center">&nbsp;</td>
-    <td style="border:1px solid #000; font-size:14px; text-align:center">&nbsp;</td>
-    <td style="border:1px solid #000; font-size:14px; text-align:center">&nbsp;</td>
-    <td style="border:1px solid #000; font-size:14px; text-align:center">&nbsp;</td>
-    <td style="border:1px solid #000; font-size:14px; text-align:center">&nbsp;</td>
-    <td style="border:1px solid #000; font-size:14px; text-align:center">&nbsp;</td></tr>
-    <tr>
-    <td style="border:1px solid #000; font-size:14px; text-align:center">&nbsp;</td>
-    <td style="border:1px solid #000; font-size:14px; text-align:center">&nbsp;</td>
-    <td style="border:1px solid #000; font-size:14px; text-align:center">&nbsp;</td>
-    <td style="border:1px solid #000; font-size:14px; text-align:center">&nbsp;</td>
-    <td style="border:1px solid #000; font-size:14px; text-align:center">&nbsp;</td>
-    <td style="border:1px solid #000; font-size:14px; text-align:center">&nbsp;</td>
-    <td style="border:1px solid #000; font-size:14px; text-align:center">&nbsp;</td>
-    <td style="border:1px solid #000; font-size:14px; text-align:center">&nbsp;</td>
-    <td style="border:1px solid #000; font-size:14px; text-align:center">&nbsp;</td>
-    <td style="border:1px solid #000; font-size:14px; text-align:center">&nbsp;</td>
-    <td style="border:1px solid #000; font-size:14px; text-align:center">&nbsp;</td>
-    <td style="border:1px solid #000; font-size:14px; text-align:center">&nbsp;</td></tr><tr>
-    <td style="border:1px solid #000; font-size:14px; text-align:center">&nbsp;</td>
-    <td style="border:1px solid #000; font-size:14px; text-align:center">&nbsp;</td>
-    <td style="border:1px solid #000; font-size:14px; text-align:center">&nbsp;</td>
-    <td style="border:1px solid #000; font-size:14px; text-align:center">&nbsp;</td>
-    <td style="border:1px solid #000; font-size:14px; text-align:center">&nbsp;</td>
-    <td style="border:1px solid #000; font-size:14px; text-align:center">&nbsp;</td>
-    <td style="border:1px solid #000; font-size:14px; text-align:center">&nbsp;</td>
-    <td style="border:1px solid #000; font-size:14px; text-align:center">&nbsp;</td>
-    <td style="border:1px solid #000; font-size:14px; text-align:center">&nbsp;</td>
-    <td style="border:1px solid #000; font-size:14px; text-align:center">&nbsp;</td>
-    <td style="border:1px solid #000; font-size:14px; text-align:center">&nbsp;</td>
-    <td style="border:1px solid #000; font-size:14px; text-align:center">&nbsp;</td></tr><tr>
-    <td style="border:1px solid #000; font-size:14px; text-align:center">&nbsp;</td>
-    <td style="border:1px solid #000; font-size:14px; text-align:center">&nbsp;</td>
-    <td style="border:1px solid #000; font-size:14px; text-align:center">&nbsp;</td>
-    <td style="border:1px solid #000; font-size:14px; text-align:center">&nbsp;</td>
-    <td style="border:1px solid #000; font-size:14px; text-align:center">&nbsp;</td>
-    <td style="border:1px solid #000; font-size:14px; text-align:center">&nbsp;</td>
-    <td style="border:1px solid #000; font-size:14px; text-align:center">&nbsp;</td>
-    <td style="border:1px solid #000; font-size:14px; text-align:center">&nbsp;</td>
-    <td style="border:1px solid #000; font-size:14px; text-align:center">&nbsp;</td>
-    <td style="border:1px solid #000; font-size:14px; text-align:center">&nbsp;</td>
-    <td style="border:1px solid #000; font-size:14px; text-align:center">&nbsp;</td>
-    <td style="border:1px solid #000; font-size:14px; text-align:center">&nbsp;</td></tr>
-    <td style="border-left:1px solid #000;  font-size:14px;">&nbsp;
-    <td style="border:1px solid #000; font-size:14px; text-align:center">&nbsp;</td>
-    <td style="border:1px solid #000; font-size:14px; text-align:center">&nbsp;</td>
-    <td style="border:1px solid #000; font-size:14px; text-align:center">&nbsp;</td>
-    <td style="border:1px solid #000; font-size:14px; text-align:center">&nbsp;</td>
-    <td style="border:1px solid #000; font-size:14px; text-align:center">&nbsp;</td>
-    <td style="border:1px solid #000; font-size:14px; text-align:center">&nbsp;</td>
-    <td style="border:1px solid #000; font-size:14px; text-align:center">&nbsp;</td>
-    <td style="border:1px solid #000; font-size:14px; text-align:center">&nbsp;</td>
-    <td style="border:1px solid #000; font-size:14px; text-align:center">&nbsp;</td>
-    <td style="border:1px solid #000; font-size:14px; text-align:center">&nbsp;</td>
-    <td style="border:1px solid #000; font-size:14px; text-align:center">&nbsp;</td>
-    <td style="border:1px solid #000; font-size:14px; text-align:center">&nbsp;</td></tr>
+    '.$subject_row_1_5.'
 
     <tr>
     <td style="border-left:1px solid #000; border-bottom:1px solid #000; font-size:14px;" rowspan="5">&nbsp;<b>ภาคเรียน</b> '.$semester.'<br>

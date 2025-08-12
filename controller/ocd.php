@@ -2,7 +2,10 @@
 class ocd{
   function timetables(){
     global $module;
+    $semester=base64_decode($param['semester']);
+
     $user_model=$module->model('teacher');
+
     $teacher=$user_model->getTeacher();
 
     $timeTable_model=$module->model('timeTable');
@@ -31,7 +34,6 @@ class ocd{
 
     $data=array('teachers'=>$teacher,'tids'=>$tids,'semester'=>$semester);
     $data['semesters']=$semesters;
-
     $ret['content'] = $module->view('home/timetableTeacher',$data);
     $ret['title'] = 'ตารางสอน';
     return $ret;
