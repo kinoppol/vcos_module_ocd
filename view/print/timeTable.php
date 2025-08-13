@@ -1,11 +1,9 @@
 <?php
 helper('print');
 $module->helper('subject');
-print_r($subject_list);
+//print_r($subject_list);
 
 $subject_list=array_values($subject_list);
-print "<hr>";
-print_r($subject_list);
 
 $sum_total_time=0;
 
