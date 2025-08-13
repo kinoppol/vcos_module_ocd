@@ -2,7 +2,7 @@
 class ocd{
   function timetables(){
     global $module;
-    $semester=base64_decode($param['semester']);
+    //$semester=base64_decode($param['semester']);
 
     $user_model=$module->model('teacher');
 
