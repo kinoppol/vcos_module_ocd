@@ -22,7 +22,7 @@ class timeTable extends dummy_model{
     }
 
     function getTimetableSlot($data=array()){
-        $sql='select day_of_week,time_range,teacher_id,day_of_week_no from rms_timetable';
+        $sql='select day_of_week,time_range,teacher_id,day_of_week_no,time_total,subject_code,room from rms_timetable';
         $sql.= ' where timeTableID !="" AND timeTableSubID != ""';
         if(count($data)>=1){
             $sql.= ' AND '.arr2and($data);

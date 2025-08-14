@@ -1,12 +1,45 @@
 <?php
 helper('print');
 $module->helper('subject');
-//print_r($subject_list);
+$module->helper('timetable');
+//print_r($timetableSlot);
+
 
 $subject_list=array_values($subject_list);
 
-$sum_total_time=0;
 
+//print_r($week_slot);
+
+$cells='';
+
+
+foreach($week_slot as $day=>$cell_data){
+    
+$daycell='';
+    $jump=0;
+    foreach($cell_data as $ck=>$cd){
+        if($jump>0){
+            print $jump;
+            $jump--;
+            continue;
+        }else{
+            if($cd['time_total']>1)$jump=$cd['time_total']-1;
+            if(count($cd)>0){
+                $daycell.=cell($cd);
+            }else{
+                $daycell.=empty_cell();
+            }
+        }
+    }
+
+    $cells.=' <tr>
+                <td height="50" align="center" valign="middle" style="border-left: 1px solid #000; border-bottom: 1px solid #000; border-right: 1px solid #000;   font-size:12px; font-weight: bold;">'.$day.'</td>
+                '.$daycell.'
+            </tr>';
+}
+
+
+$sum_total_time=0;
 if(!count($subject_list)){
 
 }else{
@@ -94,7 +127,44 @@ $data=array(
     <td style="border:1px solid #000; font-size:14px; text-align:center" colspan="6">&nbsp;</td></tr>
     </table>
 
-    <table width="100%" cellpadding="0" cellspacing="0" border="0" style="min-width:" 1024px";=""><tbody><tr><td width="68" height="50" align="center" valign="middle" style="border:1px solid #000;  font-size:14px;">เวลา</td><td width="68" height="50" align="center" valign="middle" style=" border-right: 1px solid #000; border-bottom: 1px solid #000; border-top: 1px solid #000; ">07:40 - 08:00</td><td width="68" height="50" align="center" valign="middle" style=" border-right: 1px solid #000; border-bottom: 1px solid #000; border-top: 1px solid #000; font-weight: bold;">08:00 - 09:00</td><td width="68" height="50" align="center" valign="middle" style=" border-right: 1px solid #000; border-bottom: 1px solid #000; border-top: 1px solid #000; ">09:00 - 10:00</td><td width="68" height="50" align="center" valign="middle" style=" border-right: 1px solid #000; border-bottom: 1px solid #000; border-top: 1px solid #000; ">10:00 - 11:00</td><td width="68" height="50" align="center" valign="middle" style=" border-right: 1px solid #000; border-bottom: 1px solid #000; border-top: 1px solid #000; ">11:00 - 12:00</td><td width="68" height="50" align="center" valign="middle" style=" border-right: 1px solid #000; border-bottom: 1px solid #000; border-top: 1px solid #000; ">12:00 - 13:00</td><td width="68" height="50" align="center" valign="middle" style=" border-right: 1px solid #000; border-bottom: 1px solid #000; border-top: 1px solid #000; ">13:00 - 14:00</td><td width="68" height="50" align="center" valign="middle" style=" border-right: 1px solid #000; border-bottom: 1px solid #000; border-top: 1px solid #000; ">14:00 - 15:00</td><td width="68" height="50" align="center" valign="middle" style=" border-right: 1px solid #000; border-bottom: 1px solid #000; border-top: 1px solid #000; ">15:00 - 16:00</td><td width="68" height="50" align="center" valign="middle" style=" border-right: 1px solid #000; border-bottom: 1px solid #000; border-top: 1px solid #000; ">16:00 - 17:00</td><td width="68" height="50" align="center" valign="middle" style=" border-right: 1px solid #000; border-bottom: 1px solid #000; border-top: 1px solid #000; ">17:00 - 18:00</td><td width="68" height="50" align="center" valign="middle" style=" border-right: 1px solid #000; border-bottom: 1px solid #000; border-top: 1px solid #000; ">18:00 - 19:00</td><td width="68" height="50" align="center" valign="middle" style=" border-right: 1px solid #000; border-bottom: 1px solid #000; border-top: 1px solid #000; ">19:00 - 20:00</td></tr><tr><td width="68" height="30" align="center" valign="middle" style="border:1px solid #000;  font-size:14px;">วัน/คาบ</td><td rowspan="6" align="center" valign="middle" style="border-right: 1px solid #000; border-bottom: 1px solid #000; "><div style=" -ms-writing-mode: tb-rl;-webkit-writing-mode:vertical-rl;writing-mode: vertical-rl;transform:rotate(180deg);white-space: nowrap;">กิจกรรมหน้าเสาธง</div></td><td align="center" valign="middle" style=" border-right: 1px solid #000; border-bottom: 1px solid #000;  ">1</td><td align="center" valign="middle" style=" border-right: 1px solid #000; border-bottom: 1px solid #000;  ">2</td><td align="center" valign="middle" style=" border-right: 1px solid #000; border-bottom: 1px solid #000;  ">3</td><td align="center" valign="middle" style=" border-right: 1px solid #000; border-bottom: 1px solid #000;  ">4</td><td align="center" valign="middle" style=" border-right: 1px solid #000; border-bottom: 1px solid #000;  ">5</td><td align="center" valign="middle" style=" border-right: 1px solid #000; border-bottom: 1px solid #000;  ">6</td><td align="center" valign="middle" style=" border-right: 1px solid #000; border-bottom: 1px solid #000;  ">7</td><td align="center" valign="middle" style=" border-right: 1px solid #000; border-bottom: 1px solid #000;  ">8</td><td align="center" valign="middle" style=" border-right: 1px solid #000; border-bottom: 1px solid #000;  ">9</td><td align="center" valign="middle" style=" border-right: 1px solid #000; border-bottom: 1px solid #000;  ">10</td><td align="center" valign="middle" style=" border-right: 1px solid #000; border-bottom: 1px solid #000;  ">11</td><td align="center" valign="middle" style=" border-right: 1px solid #000; border-bottom: 1px solid #000;  ">12</td></tr><tr><td height="50" align="center" valign="middle" style="border-left: 1px solid #000; border-bottom: 1px solid #000; border-right: 1px solid #000;   font-size:12px; font-weight: bold;">วันจันทร์</td><td style="border-right: 1px solid #000; border-bottom: 1px solid #000; ">&nbsp;</td><td style="border-right: 1px solid #000; border-bottom: 1px solid #000; ">&nbsp;</td><td style="border-right: 1px solid #000; border-bottom: 1px solid #000; ">&nbsp;</td><td style="border-right: 1px solid #000; border-bottom: 1px solid #000; ">&nbsp;</td><td style="border-right: 1px solid #000; border-bottom: 1px solid #000; ">&nbsp;</td><td style="border-right: 1px solid #000; border-bottom: 1px solid #000; ">&nbsp;</td><td style="border-right: 1px solid #000; border-bottom: 1px solid #000; ">&nbsp;</td><td style="border-right: 1px solid #000; border-bottom: 1px solid #000; ">&nbsp;</td><td style="border-right: 1px solid #000; border-bottom: 1px solid #000; ">&nbsp;</td><td style="border-right: 1px solid #000; border-bottom: 1px solid #000; ">&nbsp;</td><td style="border-right: 1px solid #000; border-bottom: 1px solid #000; ">&nbsp;</td><td style="border-right: 1px solid #000; border-bottom: 1px solid #000; ">&nbsp;</td></tr><tr><td height="50" align="center" valign="middle" style="border-left: 1px solid #000; border-bottom: 1px solid #000; border-right: 1px solid #000;   font-size:12px; font-weight: bold;">วันอังคาร</td><td style="border-right: 1px solid #000; border-bottom: 1px solid #000; ">&nbsp;</td><td style="border-right: 1px solid #000; border-bottom: 1px solid #000; ">&nbsp;</td><td style="border-right: 1px solid #000; border-bottom: 1px solid #000; ">&nbsp;</td><td style="border-right: 1px solid #000; border-bottom: 1px solid #000; ">&nbsp;</td><td style="border-right: 1px solid #000; border-bottom: 1px solid #000; ">&nbsp;</td><td style="border-right: 1px solid #000; border-bottom: 1px solid #000; ">&nbsp;</td><td style="border-right: 1px solid #000; border-bottom: 1px solid #000; ">&nbsp;</td><td style="border-right: 1px solid #000; border-bottom: 1px solid #000; ">&nbsp;</td><td style="border-right: 1px solid #000; border-bottom: 1px solid #000; ">&nbsp;</td><td style="border-right: 1px solid #000; border-bottom: 1px solid #000; ">&nbsp;</td><td style="border-right: 1px solid #000; border-bottom: 1px solid #000; ">&nbsp;</td><td style="border-right: 1px solid #000; border-bottom: 1px solid #000; ">&nbsp;</td></tr><tr><td height="50" align="center" valign="middle" style="border-left: 1px solid #000; border-bottom: 1px solid #000; border-right: 1px solid #000;   font-size:12px; font-weight: bold;">วันพุธ</td><td style="border-right: 1px solid #000; border-bottom: 1px solid #000; ">&nbsp;</td><td style="border-right: 1px solid #000; border-bottom: 1px solid #000; ">&nbsp;</td><td style="border-right: 1px solid #000; border-bottom: 1px solid #000; ">&nbsp;</td><td style="border-right: 1px solid #000; border-bottom: 1px solid #000; ">&nbsp;</td><td style="border-right: 1px solid #000; border-bottom: 1px solid #000; ">&nbsp;</td><td style="border-right: 1px solid #000; border-bottom: 1px solid #000; ">&nbsp;</td><td style="border-right: 1px solid #000; border-bottom: 1px solid #000; ">&nbsp;</td><td colspan="3" align="center" valign="middle" style=" font-weight: normal; border-right: 1px solid #000; border-bottom: 1px solid #000; "><div>31900-0004</div><div>711</div><div>สทส.1/2(ม.6ปกติ)<div></div></div></td><td style="border-right: 1px solid #000; border-bottom: 1px solid #000; ">&nbsp;</td><td style="border-right: 1px solid #000; border-bottom: 1px solid #000; ">&nbsp;</td></tr><tr><td height="50" align="center" valign="middle" style="border-left: 1px solid #000; border-bottom: 1px solid #000; border-right: 1px solid #000;   font-size:12px; font-weight: bold;">วันพฤหัสบดี</td><td colspan="4" align="center" valign="middle" style=" font-weight: normal; border-right: 1px solid #000; border-bottom: 1px solid #000; "><div>31901-2008</div><div>932</div><div>สทส.2/2 (ม.6 ปกติ)<div></div></div></td><td style="border-right: 1px solid #000; border-bottom: 1px solid #000; ">&nbsp;</td><td colspan="1" align="center" valign="middle" style=" font-weight: normal; border-right: 1px solid #000; border-bottom: 1px solid #000; "><div>31901-2008</div><div>932</div><div>สทส.2/2 (ม.6 ปกติ)<div></div></div></td><td style="border-right: 1px solid #000; border-bottom: 1px solid #000; ">&nbsp;</td><td style="border-right: 1px solid #000; border-bottom: 1px solid #000; ">&nbsp;</td><td style="border-right: 1px solid #000; border-bottom: 1px solid #000; ">&nbsp;</td><td style="border-right: 1px solid #000; border-bottom: 1px solid #000; ">&nbsp;</td><td style="border-right: 1px solid #000; border-bottom: 1px solid #000; ">&nbsp;</td><td style="border-right: 1px solid #000; border-bottom: 1px solid #000; ">&nbsp;</td></tr><tr><td height="50" align="center" valign="middle" style="border-left: 1px solid #000; border-bottom: 1px solid #000; border-right: 1px solid #000;   font-size:12px; font-weight: bold;">วันศุกร์</td><td style="border-right: 1px solid #000; border-bottom: 1px solid #000; ">&nbsp;</td><td style="border-right: 1px solid #000; border-bottom: 1px solid #000; ">&nbsp;</td><td style="border-right: 1px solid #000; border-bottom: 1px solid #000; ">&nbsp;</td><td style="border-right: 1px solid #000; border-bottom: 1px solid #000; ">&nbsp;</td><td style="border-right: 1px solid #000; border-bottom: 1px solid #000; ">&nbsp;</td><td style="border-right: 1px solid #000; border-bottom: 1px solid #000; ">&nbsp;</td><td colspan="2" align="center" valign="middle" style=" font-weight: normal; border-right: 1px solid #000; border-bottom: 1px solid #000; "><div>PLC</div><div></div><div><div></div></div></td><td colspan="2" align="center" valign="middle" style=" font-weight: normal; border-right: 1px solid #000; border-bottom: 1px solid #000; "><div>31900-0004</div><div>711</div><div>สทส.1/2(ม.6ปกติ)<div></div></div></td><td style="border-right: 1px solid #000; border-bottom: 1px solid #000; ">&nbsp;</td><td style="border-right: 1px solid #000; border-bottom: 1px solid #000; ">&nbsp;</td></tr></tbody></table></span>
+    <table width="100%" cellpadding="0" cellspacing="0" border="0" style="min-width:" 1024px";="">
+        <tbody>
+            <tr>
+                <td width="68" height="50" align="center" valign="middle" style="border:1px solid #000;  font-size:14px;">เวลา</td>
+                <td width="68" height="50" align="center" valign="middle" style=" border-right: 1px solid #000; border-bottom: 1px solid #000; border-top: 1px solid #000; ">07:40 - 08:00</td>
+                <td width="68" height="50" align="center" valign="middle" style=" border-right: 1px solid #000; border-bottom: 1px solid #000; border-top: 1px solid #000; font-weight: bold;">08:00 - 09:00</td>
+                <td width="68" height="50" align="center" valign="middle" style=" border-right: 1px solid #000; border-bottom: 1px solid #000; border-top: 1px solid #000; ">09:00 - 10:00</td>
+                <td width="68" height="50" align="center" valign="middle" style=" border-right: 1px solid #000; border-bottom: 1px solid #000; border-top: 1px solid #000; ">10:00 - 11:00</td>
+                <td width="68" height="50" align="center" valign="middle" style=" border-right: 1px solid #000; border-bottom: 1px solid #000; border-top: 1px solid #000; ">11:00 - 12:00</td>
+                <td width="68" height="50" align="center" valign="middle" style=" border-right: 1px solid #000; border-bottom: 1px solid #000; border-top: 1px solid #000; ">12:00 - 13:00</td>
+                <td width="68" height="50" align="center" valign="middle" style=" border-right: 1px solid #000; border-bottom: 1px solid #000; border-top: 1px solid #000; ">13:00 - 14:00</td>
+                <td width="68" height="50" align="center" valign="middle" style=" border-right: 1px solid #000; border-bottom: 1px solid #000; border-top: 1px solid #000; ">14:00 - 15:00</td>
+                <td width="68" height="50" align="center" valign="middle" style=" border-right: 1px solid #000; border-bottom: 1px solid #000; border-top: 1px solid #000; ">15:00 - 16:00</td>
+                <td width="68" height="50" align="center" valign="middle" style=" border-right: 1px solid #000; border-bottom: 1px solid #000; border-top: 1px solid #000; ">16:00 - 17:00</td>
+                <td width="68" height="50" align="center" valign="middle" style=" border-right: 1px solid #000; border-bottom: 1px solid #000; border-top: 1px solid #000; ">17:00 - 18:00</td>
+                <td width="68" height="50" align="center" valign="middle" style=" border-right: 1px solid #000; border-bottom: 1px solid #000; border-top: 1px solid #000; ">18:00 - 19:00</td>
+                <td width="68" height="50" align="center" valign="middle" style=" border-right: 1px solid #000; border-bottom: 1px solid #000; border-top: 1px solid #000; ">19:00 - 20:00</td>
+            </tr>
+            <tr>
+                <td width="68" height="30" align="center" valign="middle" style="border:1px solid #000;  font-size:14px;">วัน/คาบ</td>
+                <td rowspan="6" align="center" valign="middle" style="border-right: 1px solid #000; border-bottom: 1px solid #000; "><div style=" -ms-writing-mode: tb-rl;-webkit-writing-mode:vertical-rl;writing-mode: vertical-rl;transform:rotate(180deg);white-space: nowrap;">กิจกรรมหน้าเสาธง</div></td>
+                <td align="center" valign="middle" style=" border-right: 1px solid #000; border-bottom: 1px solid #000;  ">1</td>
+                <td align="center" valign="middle" style=" border-right: 1px solid #000; border-bottom: 1px solid #000;  ">2</td>
+                <td align="center" valign="middle" style=" border-right: 1px solid #000; border-bottom: 1px solid #000;  ">3</td>
+                <td align="center" valign="middle" style=" border-right: 1px solid #000; border-bottom: 1px solid #000;  ">4</td>
+                <td align="center" valign="middle" style=" border-right: 1px solid #000; border-bottom: 1px solid #000;  ">5</td>
+                <td align="center" valign="middle" style=" border-right: 1px solid #000; border-bottom: 1px solid #000;  ">6</td>
+                <td align="center" valign="middle" style=" border-right: 1px solid #000; border-bottom: 1px solid #000;  ">7</td>
+                <td align="center" valign="middle" style=" border-right: 1px solid #000; border-bottom: 1px solid #000;  ">8</td>
+                <td align="center" valign="middle" style=" border-right: 1px solid #000; border-bottom: 1px solid #000;  ">9</td>
+                <td align="center" valign="middle" style=" border-right: 1px solid #000; border-bottom: 1px solid #000;  ">10</td
+                ><td align="center" valign="middle" style=" border-right: 1px solid #000; border-bottom: 1px solid #000;  ">11</td>
+                <td align="center" valign="middle" style=" border-right: 1px solid #000; border-bottom: 1px solid #000;  ">12</td>
+            </tr>
+            '.$cells.'
+        </tbody>
+    </table>
+    </span>
     <br>
     <table width="100%">
         <tr>
