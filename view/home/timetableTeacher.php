@@ -21,7 +21,7 @@ foreach($tids as $t){
                 href="'.module_api('ocd','ocd_print','timetable').'/semester/'.urlencode(base64_encode($semester)).'/tid/'.$t['tid'].'" target="_blank"><i
                     class="bx bx-table me-1"></i> พิมพ์ตารางสอน ศธ.02</a>
             <a class="dropdown-item"
-                href="#"><i
+                href="'.module_api('ocd','ocd_print','timetableOnlyCounted').'/semester/'.urlencode(base64_encode($semester)).'/tid/'.$t['tid'].'" target="_blank"><i
                     class="bx bx-table me-1"></i> พิมพ์ตารางสอนเบิก</a>
         </div>
     </div>

@@ -23,8 +23,33 @@ $daycell='';
             $jump--;
             continue;
         }else{
+
+            if($show=='all'){
+            }else if($show=='onlyCounted'){
+                $counted=array(
+                    'in'=>0,
+                    'out'=>0,
+                    'not'=>0,
+                );
+                $time_start=mb_substr($cd['time_range'],0,2);
+                for($i=0;$i<$cd['time_total'];$i++){
+                    $data=array(
+                            'semester'=>$semester,
+                            'teacher_id'=>$cd['teacher_id'],
+                            'day_of_week_no'=>$cd['day_of_week_no'],
+                            'time_start'=>($time_start+$i).'.00',
+                        );
+                        $result=$timeTable_model->getCounted($data);
+                        $counted['in']+=$result['in'];
+                        $counted['out']+=$result['out'];
+                        $counted['not']+=$result['not'];
+                }
+                //print_r($counted);
+                $cd['time_total']-=$counted['not'];
+            }
+
             if($cd['time_total']>1)$jump=$cd['time_total']-1;
-            if(count($cd)>0){
+            if($cd['time_total']>0){
                 $daycell.=cell($cd);
             }else{
                 $daycell.=empty_cell();
@@ -46,7 +71,9 @@ if(!count($subject_list)){
     $subject_row='';
     for($i=0;$i<9;$i++){
         if(!empty($subject_list[$i])){
-            $sum_total_time+=$subject_list[$i]['time_total'];
+            
+                $sum_total_time+=$subject_list[$i]['time_total'];
+            
             $subject_row.='<tr>
             <td style="border:1px solid #000; font-size:14px; text-align:center">'.sj_code($subject_list[$i]['subject_code']).'</td>
             <td style="border:1px solid #000; font-size:14px; text-align:left">'.$subject_list[$i]['subject_name'].'</td>

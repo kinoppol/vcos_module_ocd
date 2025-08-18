@@ -1,6 +1,9 @@
 <?php
 class ocd_print{
-  function timetable(){
+  function timetableOnlyCounted(){
+    return $this->timetable('onlyCounted');
+  }
+  function timetable($show='all'){
     global $module;
     global $param;
     //print_r($param);
@@ -69,6 +72,8 @@ class ocd_print{
     $data['week_slot']=$week_slot;
     $data['subject_list']=$subject_list;
     $data['module']=$module;
+    $data['show']=$show;
+    $data['timeTable_model']=$timeTable_model;
     $result = $module->view('print/timeTable',$data);
     $ret['content']=$result;
     return $ret;

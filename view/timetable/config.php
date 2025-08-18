@@ -3,17 +3,27 @@ $data['title']='ภาคเรียน '.$semester;
 $module->helper('radio');
 $teachTable='';
 //print_r($timeSlot);
-foreach($timeSlot as $t){
+$time_hour=array();
+foreach($timeSlot as $ts){
+    $time_start=mb_substr($ts['time_range'],0,2);
+
+    for($i=0;$i<$ts['time_total'];$i++){
+        $th_data=$ts;
+        $th_data['time_start']=($time_start+$i).".00";
+        $time_hour[]=$th_data;
+    }
+}
+foreach($time_hour as $t){
     // if(empty($t['timeTableID'])||empty($t['timeTableSubID'])){
     //     continue;
     // }
-    $id=$semester.'-'.$t['teacher_id'].'-'.$t['day_of_week_no'].'-'.$t['time_range'];
+    $id=$semester.'-'.$t['teacher_id'].'-'.$t['day_of_week_no'].'-'.$t['time_start'];
 
     $key=array(
         'semester'=>$semester,
         'teacher_id'=>$t['teacher_id'],
         'day_of_week_no'=>$t['day_of_week_no'],
-        'time_range'=>$t['time_range'],
+        'time_start'=>$t['time_start'],
     );
     $ocd_tc=$ocd_config_model->getConfig($key);
     $ocd_tc=$ocd_tc[0];
@@ -52,7 +62,7 @@ foreach($timeSlot as $t){
 
   $teachTable.='<tr>
   <td>'.$t['day_of_week'].'</td>
-  <td>'.$t['time_range'].'</td>
+  <td>'.$t['time_start'].'</td>
   <td>'.implode(', ',$subject_code).'</td>
   <td>'.implode(', ',$subject_name).'</td>
   <td>'.implode(', ',$student_group_id).'</td>

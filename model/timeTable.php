@@ -57,5 +57,22 @@ class timeTable extends dummy_model{
         return $ret;
     }
 
+    function getCounted($data=array()){
+
+        $sql='select * from ocd_timetable_config where '.arr2and($data); 
+        $result=$this->db->query($sql);
+        //print $sql;
+        $counted=array(
+            'in'=>0,
+            'out'=>0,
+            'not'=>0,
+        );
+
+        while($t=$result->fetch_assoc()){
+            $counted[$t['status']]++;
+        }
+        return $counted;
+    }
+
 
 }

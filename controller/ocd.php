@@ -81,8 +81,8 @@ class ocd{
     $ocd_config_model=$module->model('ocd_config');
     foreach($_POST['timetable_status'] as $k=>$v){
       $key=array();
-      list($key['semester'],$key['teacher_id'],$key['day_of_week_no'],$time_start,$time_end)=explode('-',$k);
-      $key['time_range']=$time_start.'-'.$time_end;
+      list($key['semester'],$key['teacher_id'],$key['day_of_week_no'],$key['time_start'])=explode('-',$k);
+      //$key['time_range']=$time_start.'-'.$time_end;
       $ocd_config_model->setConfig($key,$v);
     }
 
