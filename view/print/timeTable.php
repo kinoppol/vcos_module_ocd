@@ -19,7 +19,7 @@ $daycell='';
     $jump=0;
     foreach($cell_data as $ck=>$cd){
         if($jump>0){
-            print $jump;
+            //print $jump;
             $jump--;
             continue;
         }else{
