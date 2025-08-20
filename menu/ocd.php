@@ -22,4 +22,19 @@ $menu['เอกสารเบิกค่าสอน']=array(
         ),*/
     ),
 );
+$active_menu=explode(',',$_SESSION['user_type']['active_menu']);
+//print_r($active_menu);
+if (($key=array_search("ocd_config", $active_menu)) != NULL) 
+    $menu['ตั้งค่าการทำงาน']=array(
+    'timetables'=>array(
+        'label'=>'ข้อมูลสถานศึกษา',
+        'bullet'=>'tf-icons bx bx-home',
+        'url'=>module_url('ocd','ocd_config','working'),
+    ),
+    'claim_form'=>array(
+        'label'=>'การลงนาม',
+        'bullet'=>'tf-icons bx bx-edit',
+        'url'=>module_url('ocd','ocd_config','signing'),
+    ),
+);
 print gen_menu($menu);
