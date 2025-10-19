@@ -29,12 +29,17 @@ if (($key=array_search("ocd_config", $active_menu)) != NULL)
     'timetables'=>array(
         'label'=>'ข้อมูลสถานศึกษา',
         'bullet'=>'tf-icons bx bx-home',
-        'url'=>module_url('ocd','ocd_config','working'),
+        'url'=>module_url('ocd','ocd_config','school'),
     ),
-    'claim_form'=>array(
+    'signing'=>array(
         'label'=>'การลงนาม',
         'bullet'=>'tf-icons bx bx-edit',
         'url'=>module_url('ocd','ocd_config','signing'),
+    ),
+    'claim_condition'=>array(
+        'label'=>'เกณฑ์การเบิก',
+        'bullet'=>'tf-icons bx bx-cube-alt',
+        'url'=>module_url('ocd','ocd_config','claim_condition'),
     ),
 );
 print gen_menu($menu);

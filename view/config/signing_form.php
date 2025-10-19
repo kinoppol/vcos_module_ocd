@@ -48,8 +48,8 @@ $form['inputs']=array(
 foreach($form['inputs'] as $input){
     $data['content'].=form_gen_input($input);   
 }
-$data['content']=form_gen_form(['content'=>$data['content'],'action'=>module_url('ocd','ocd_config','save_signing')]);    
+$data['content']=form_gen_form(['content'=>$data['content'],'action'=>module_api('ocd','ocd_config','save_signing')]);    
 
-$data['title']='ข้อมูลระบบ';
+$data['title']='รายชื่อผู้บริหาร';
 //$data['content']=form_gen_input_text($form['input_text']);
 print card($data);

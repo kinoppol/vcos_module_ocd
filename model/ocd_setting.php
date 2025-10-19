@@ -6,14 +6,14 @@ class ocd_setting extends dummy_model{
     }
 
     function addConfig($key='',$value=''){
-        $sql='insert into ocd_config set id='.pq($key).',value='.pq($value);
+        $sql='insert into ocd_config set id='.pq($key).',value='.pq($value,true);
         //print $sql;
         $result=$this->db->query($sql);
         return $result;
     }    
 
     function updateConfig($key='',$value=''){
-        $sql='update ocd_config set id='.pq($key).',value='.pq($value);
+        $sql='update ocd_config set value='.pq($value,true).' where id='.pq($key);
         //print $sql;
         $result=$this->db->query($sql);
         return $result;
@@ -24,6 +24,7 @@ class ocd_setting extends dummy_model{
         if(count($data)>=1){
             $sql.= ' where '.arr2and($data);
         }
+        //print $sql;
         $result=$this->db->query($sql);
         $ret=array();
         while($r=$result->fetch_assoc()){
@@ -35,6 +36,7 @@ class ocd_setting extends dummy_model{
     
     function update_config_if_empty_create($key,$value){
       $chk=$this->getConfig(array('id'=>$key));
+      //print_r($chk);
       if(count($chk)<1){
         //print 'Create';
         $result=$this->addConfig($key,$value);
