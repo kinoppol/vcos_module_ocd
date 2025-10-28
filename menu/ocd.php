@@ -41,5 +41,10 @@ if (($key=array_search("ocd_config", $active_menu)) != NULL)
         'bullet'=>'tf-icons bx bx-cube-alt',
         'url'=>module_url('ocd','ocd_config','claim_condition'),
     ),
+    'semester'=>array(
+        'label'=>'ตั้งค่าภาคเรียน',
+        'bullet'=>'tf-icons bx bx-table',
+        'url'=>module_url('ocd','ocd_config','semester'),
+    ),
 );
 print gen_menu($menu);

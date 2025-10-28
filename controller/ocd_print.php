@@ -9,6 +9,9 @@ class ocd_print{
     //print_r($param);
     $teacher_model=$module->model('teacher');
     $timeTable_model=$module->model('timeTable');
+    
+    $settingModel = $module->model('ocd_setting');
+    $config_data=$settingModel->getConfig();
 
     $teacher_citizen_id=$param['tid'];
     $semester=base64_decode($param['semester']);
@@ -73,6 +76,7 @@ class ocd_print{
     $data['subject_list']=$subject_list;
     $data['module']=$module;
     $data['show']=$show;
+    $data['config_data']=$config_data;
     $data['timeTable_model']=$timeTable_model;
     $result = $module->view('print/timeTable',$data);
     $ret['content']=$result;

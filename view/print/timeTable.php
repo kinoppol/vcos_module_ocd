@@ -12,6 +12,10 @@ $deputy_academic_position_name='รองผู้อำนวยการฝ่
 $head_curriculum_position_name='หัวหน้างานพัฒนาหลักสูตรฯ';
 $head_department_position_name='หัวหน้าแผนกวิชา';
 
+$director_name=$config_data['director_name'];
+$deputy_academic_name=$config_data['deputy_academic_name'];
+
+$blank_name='&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;';
 //print_r($week_slot);
 
 $cells='';
@@ -211,12 +215,12 @@ $data=array(
             </td>
             <td width="25%" style="text-align:center">
             ลงชื่อ......................................................<br>
-            (&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;)<br>
+            ('.$deputy_academic_name.')<br>
             '.$deputy_academic_position_name.'
             </td>
             <td width="25%" style="text-align:center">
             ลงชื่อ......................................................<br>
-            (&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;)<br>
+            ('.$director_name.')<br>
             '.$director_position_name.'
             </td>
         </tr>
