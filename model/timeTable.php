@@ -46,7 +46,7 @@ class timeTable extends dummy_model{
         if(count($data)>=1){
             $sql.= ' AND '.arr2and($data);
         }
-        print $sql;
+        //print $sql;
         $result=$this->db->query($sql);
 
         $ret=array();
