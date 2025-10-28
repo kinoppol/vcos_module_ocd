@@ -39,8 +39,27 @@ class ocd{
     return $ret;
   }
   function claim_form(){
-    global $module;
-    $ret['content'] = $module->view('home/claim_form');
+    global $module;   
+    $semester_model=$module->model('semester');
+    $all_semester=$semester_model->getSemester();
+    $semesters=array();
+    foreach($all_semester as $k=>$v){
+      $semesters[$k]=$k;
+    }
+    
+    if(!empty($_POST['semester'])){
+      $_SESSION['semester']=$_POST['semester'];
+    }
+
+    if(empty($_SESSION['semester'])){
+      $semester=$semester_model->getCurrentSemester();
+      $_SESSION['semester']=$semester;
+    }else{
+      $semester=$_SESSION['semester'];
+    }
+    $data['semesters']=$semesters;
+    $data['semester']=$semester;
+    $ret['content'] = $module->view('claim/filter',$data);
     $ret['title'] = 'ใบเบิกค่าสอน';
     return $ret;
   }
