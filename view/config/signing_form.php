@@ -15,9 +15,9 @@ $form['inputs']=array(
         'type'=>'text',
         'required'=>1,
         'placeholder'=>'นาย/นาง/นางสาว',
-        'name'=>'deputy_resource_name',
+        'name'=>'deputy_academic_name',
         'label'=>'ชื่อ-สกุล รองผู้อำนวยการฝ่ายวิชาการ',
-        'value'=>$deputy_resource_name,
+        'value'=>$deputy_academic_name,
     ),array(
         'type'=>'text',
         'required'=>1,
