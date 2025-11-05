@@ -19,8 +19,8 @@ $data['content']='
             <div class="mb-4">
             <label for="exampleFormControlInput1" class="form-label">แผนก</label>
                 <label for="exampleFormControlSelect1" class="form-label">เลือกแผนก</label>
-                    <select class="form-select" id="exampleFormControlSelect1" aria-label="Default select example" name="semester">
-                        '.gen_option($semesters,$semester).'
+                    <select class="form-select" id="exampleFormControlSelect1" aria-label="Default select example" name="departments">
+                        '.gen_option($departments,$department).'
                     </select>
             </div>
         </div>      

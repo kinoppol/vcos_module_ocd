@@ -46,6 +46,10 @@ class ocd{
     foreach($all_semester as $k=>$v){
       $semesters[$k]=$k;
     }
+
+    
+    $rms_model=$module->model('rms_db');
+    $dept=$rms_model->get_dep(array('dep_group_id'=>'3'));
     
     if(!empty($_POST['semester'])){
       $_SESSION['semester']=$_POST['semester'];
@@ -57,8 +61,18 @@ class ocd{
     }else{
       $semester=$_SESSION['semester'];
     }
+
+     if(!empty($_POST['department'])){
+      $_SESSION['department']=$_POST['department'];
+    }
+    if(empty($_SESSION['department'])){
+      $_SESSION['department']='';
+    }
+
     $data['semesters']=$semesters;
     $data['semester']=$semester;
+    $data['departments']=$dept;
+    $data['department']=$_SESSION['department'];
     $ret['content'] = $module->view('claim/filter',$data);
     $ret['title'] = 'ใบเบิกค่าสอน';
     return $ret;
